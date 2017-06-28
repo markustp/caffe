@@ -24,25 +24,28 @@ sudo apt-get install libgflags-dev libgoogle-glog-dev liblmdb-dev -y
 sudo apt-get install python-dev python-numpy python-skimage python-protobuf -y
 sudo apt-get install libopenblas-dev -y
 
+git checkout ssd
 sudo usermod -a -G video $USER
-/bin/echo -e "\e[1;32mCloning Caffe into the home directory\e[0m"
-cp Makefile.config.example Makefile.config
-# If cuDNN is found cmake uses it in the makefile
-# Regen the makefile; On 16.04, aarch64 has issues with a static cuda runtime
 mkdir build
 cd build
-cmake -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF ..
+# If cuDNN is found cmake uses it in the makefile
+# Regen the makefile; On 16.04, aarch64 has issues with a static cuda runtime
+cmake -DCUDA_USE_STATIC_CUDA_RUNTIME=OFF -DUSE_OPENCV=ON -DUSE_CUDNN=ON ..
 # Include the hdf5 directory for the includes; 16.04 previously had issues for some reason
 # The TX2 seems to handle this correctly now
 # echo "INCLUDE_DIRS += /usr/include/hdf5/serial/" >> Makefile.config
 /bin/echo -e "\e[1;32mCompiling Caffe\e[0m"
-make -j6 all
-sudo make install -j6
-make pycaffe 
-export export PYTHONPATH=$home/caffe/python:$PYTHONPATH
+make -j6
+export PYTHONPATH=$HOME/caffe/python:$PYTHONPATH
+/bin/echo -e "\e[1;32mCompiling for Python\e[0m"
+make pycaffe -j6
+#make test -j6 
+
 
 # Run the tests to make sure everything works
 /bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
-make -j6 runtest
+#make -j6 runtest
 # The following is a quick timing test ...
-# tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
+./tools/caffe time --model=../models/bvlc_alexnet/deploy.prototxt --gpu=0
+
+#python AscendCode/ascend_ssd_pascal_webcam.py 

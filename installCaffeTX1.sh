@@ -43,4 +43,4 @@ make py
 /bin/echo -e "\e[1;32mRunning Caffe Tests\e[0m"
 make -j4 runtest
 # The following is a quick timing test ...
-tools/caffe time --model=models/bvlc_alexnet/deploy.prototxt --gpu=0
+tools/caffe time --model=../models/bvlc_alexnet/deploy.prototxt --gpu=0
