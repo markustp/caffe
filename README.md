@@ -18,7 +18,7 @@ For further use please cite SSD:
     }
 
 ### Contents
-1. [Required software](#required_software)
+1. [Required software](#required)
 2. [Installation](#installation)
 3. [Models](#models)
 4. [Run the robot detection](#run the robot detection)
