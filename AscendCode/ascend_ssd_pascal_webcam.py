@@ -73,7 +73,7 @@ caffe_root = os.getcwd()
 # Set true if you want to start training right after generating all files.
 run_soon = True
 # The device id for webcam
-webcam_id = 1
+webcam_id = 0
 # Number of frames to be skipped.
 skip_frames = 0
 

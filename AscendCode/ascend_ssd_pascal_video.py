@@ -73,7 +73,7 @@ caffe_root = os.getcwd()
 # Set true if you want to start training right after generating all files.
 run_soon = True
 # The video file path
-video_file = "./data/ascend/video_data/data_3aug_7_0.mp4"
+video_file = "./data/ascend/video_data/video3.avi"
 # Name of the file to save the output video
 save_file = "./data/ascend/video_data/output.avi"
 
@@ -92,8 +92,8 @@ lr_mult = 1.
 # Stores LabelMapItem.
 label_map_file = "data/ascend/labelmap.prototxt"
 # The resized image size
-resize_width = 420
-resize_height = 420
+resize_width = 512
+resize_height = 512
 
 # Parameters needed for test.
 # Set the number of test iterations to the maximum integer number.
@@ -156,7 +156,7 @@ det_out_param = {
     }
 
 # The job name should be same as the name used in examples/ssd/ssd_pascal.py.
-job_name = "SSD_Color_{}".format(resize)
+job_name = "SSD_Colored_{}".format(resize)
 # The name of the model. Modify it if you want.
 model_name = "VGG_Ascend_{}".format(job_name)
 
