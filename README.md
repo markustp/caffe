@@ -18,11 +18,11 @@ For further use please cite SSD:
     }
 
 ### Contents
-1. [Required software](#required)
+1. [Required software](#required-software)
 2. [Installation](#installation)
 3. [Models](#models)
-4. [Run the robot detection](#run the robot detection)
-5. [Retrain the model](#retrain the model)
+4. [Run the robot detection](#run-the-robot-detection)
+5. [Retrain the model](#retrain-the-model)
 
 
 
